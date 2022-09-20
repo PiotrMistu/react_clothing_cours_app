@@ -16,6 +16,11 @@ const NavigationComponent = () => {
                         Shop
                     </Link>
                 </div>
+                <div className='nav-links-container'>
+                    <Link className="nav-link" to='/sign-in'>
+                        Sign in
+                    </Link>
+                </div>
             </div>
             <Outlet/>
         </Fragment>
