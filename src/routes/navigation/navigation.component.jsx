@@ -13,7 +13,7 @@ import {CartContext} from "../../contexts/cart.context";
 
 const Navigation = () => {
     const {currentUser} = useContext(UserContext);
-    const {isCartOpen} = useContext(CartContext);
+    const {isCartOpen, cardItems, itemsInCart} = useContext(CartContext);
     return (
         <Fragment>
             <div className='navigation'>
@@ -34,9 +34,9 @@ const Navigation = () => {
                             SIGN IN
                         </Link>
                     )}
-                    <CartIconComponent></CartIconComponent>
+                    <CartIconComponent countInCart={itemsInCart}></CartIconComponent>
                 </div>
-                {isCartOpen && <CardDropdownComponent></CardDropdownComponent>}
+                {isCartOpen && <CardDropdownComponent params={cardItems}></CardDropdownComponent>}
             </div>
             <Outlet/>
         </Fragment>

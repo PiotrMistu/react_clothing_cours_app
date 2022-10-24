@@ -2,20 +2,15 @@ import {useContext} from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 
 import {UserContext} from "./contexts/user.context";
-import {ProductContext} from "./contexts/product.context";
 
 import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
-
-// const Shop = () => {
-//   return <h1>I am the shop page</h1>;
-// };
+import CheckoutComponent from "./components/checkout/checkout.component";
 
 const App = () => {
     const {currentUser} = useContext(UserContext);
-    const {products} = useContext(ProductContext);
     return (
         <Routes>
             <Route path="/" element={<Navigation/>}>
@@ -27,9 +22,10 @@ const App = () => {
                         currentUser ? <Navigate to="/" replace/> : <Authentication/>
                     }
                 />
-            </Route>
+                <Route path="checkout" element={<CheckoutComponent/>}/>
+                </Route>
         </Routes>
-    );
+);
 };
 
 export default App;
